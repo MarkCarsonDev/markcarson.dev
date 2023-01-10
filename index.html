@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--TODO: Accessibility (I'm so sorry for the hellscape that lay before you)-->
+
 
 <head>
     <script type="text/javascript" src="https://livejs.com/live.js"></script>
@@ -19,8 +21,7 @@
     </style>
 
 
-    <meta property="og:description"
-        content="Hi there :flushed emoji:">
+    <meta property="og:description" content="Hi there :flushed emoji:">
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://markcarson.dev">
     <meta property="og:image" content="http://markcarson.dev/">
@@ -29,28 +30,37 @@
 <body>
     <div>
         <div class="header flex flex-sa flex-ae ds">
-            <div class="title">
-                <h1>Hi, I'm Mark Carson</h1>
-            </div>
             <div class="nav flex flex-col flex-sa ds">
                 <div class="flex flex-sb">
-                    <a href="portfolio">PORTFOLIO</a>
-                    <a href="about">ABOUT</a>
+                    <a href="">PORTFOLIO</a>
+                    <a href="">ABOUT</a>
                 </div>
                 <div class="flex flex-sb">
-                    <a href="resume">RESUME</a>
-                    <a href="reach_out">REACH_OUT</a>
+                    <a href="">RESUME</a>
+                    <a href="">REACH_OUT</a>
                 </div>
+                <div class="title">
+                    <h1>Hi, I'm Mark Carson</h1>
+                </div>
+
             </div>
         </div>
-        <div class="p1 flex flex-sa">
+        <div class="p1 flex flex-sa ds">
+
             <div>
-                <div>A fast learning software developer looking to use new technology to do impactful things.</div>
+                <p>A fast learning <span id="cycle" data-delay="3500"
+                        data-states='["computer scientist", "software developer", "machine learning enthusiast", "front-end developer", "data scientist", "low-level programmer", "front-end developer"]'>programmer</span> looking to use new technology to do impactful things.</p>
+
+                <p><br>For the time being, this site is in development; but please, <em>don't hesitate to reach out</em>.</p>
+
             </div>
-            <div>
+            <!--<div>
                 <img src="./placeholder.jpeg" class="img">
-            </div>
+            </div>-->
         </div>
     </div>
+    
+    <div>
+        <footer><a href="http://markcarson.dev">markcarson.dev/</a><br>Built in 2023</footer>
+    </div>
 </body>
-
