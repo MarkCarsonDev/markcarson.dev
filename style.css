@@ -1,8 +1,8 @@
 :root {
-    --background-color_old: #F2E5D7;
-    --accent-color_old: #262322;
     --background-color: #151413;
     --accent-color: #F2E5D7;
+    --lowkey-accent-color: #c9c2bc;
+    --highlight-color: #dab46e;
     --p-fontsize: 2vw;
 }
 
@@ -13,17 +13,18 @@ html {
 /* Force 'html' to be viewport width */
 body {
     width: 100%;
+    height: 100%;
+
+    
+    background-color: var(--background-color);
+    font-family: 'Playfair Display', serif;
+    margin: 0;
 }
 
 /* Overflow the body */
 
 * {
     color: var(--accent-color);
-}
-
-body {
-    background-color: var(--background-color);
-    font-family: 'Playfair Display', serif;
 }
 
 a:link {
@@ -35,20 +36,34 @@ a:visited {
 }
 
 .header {
-    height: 20vh;
-    margin: 0 5vw 0 5vw;
+    height: 50vh;
+    padding: 0 5vw;
+    flex-direction: row-reverse;
+}
+
+.header a {
+    padding: 0 1vw;
+}
+
+.header a:not(:hover) {
+    color: var(--lowkey-accent-color);
+}
+
+.header a:hover {
+    color: var(--highlight-color);
 }
 
 .title {
     font-size: 3.6vw;
     line-height: 1;
+    padding: 0 1vw;
     flex: 3;
     overflow: visible;
     white-space: nowrap;
 }
 
 .title h1 {
-    margin: 0;
+    margin: 1vh 0;
 }
 
 .nav {
@@ -58,55 +73,40 @@ a:visited {
 }
 
 .p1 {
-    margin: 4vh 5vw 0 5vw;
+    padding: 4vh 5vw 0 5vw;
 }
 
-.p1 div {
+.p1 p {
     height: var(--p-fontsize);
     font-size: var(--p-fontsize);
+    color: var(--lowkey-accent-color);
     position: relative;
-    width: 100%;
+    width: 90vw;
+    white-space: pre;
+    padding-left: 5vw;
+}
+
+p em {
+    font-style: normal;
+    color: var(--accent-color)
 }
 
 #cycle {
-    position: relative;
-    white-space: nowrap;
-    animation: scroll 10s infinite;
+    display: inline-block;
+    transition: transform 0.1s ease-in-out;
+    color: var(--highlight-color);
 }
 
-#cycle2 {
-    transition: all 4s ease-in-out 1s;
+div footer {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
-
-@keyframes scroll { 
-    0% {
-        top: 0;
-    }
-    10%, 20% {
-        top: -100%;
-    }
-    30%, 40% {
-        top: -200%;
-    }
-    50%, 60% {
-        top: -300%;
-    }
-    70%, 80% {
-        top: -400%;
-    }
-    85% {
-        top: -500%;
-    }
-    90% {
-        top: 0;
-    }
-}
-
-
 
 /* Stylistic Classes */
 .ds {
-    text-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 3px 2px rgba(0, 0, 0, 0.4);
 }
 
 
@@ -145,43 +145,6 @@ a:visited {
 
 .flex-wrap {
     flex-wrap: wrap;
-}
-
-/* Containers */
-
-.container {
-    width: 100%;
-    max-width: 1350px;
-    margin: 0 auto;
-    padding: 100px 50px;
-}
-
-.container-large {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 50px;
-}
-
-/* Background Colors */
-
-.bg-white {
-    background: var(--white-color);
-}
-
-.bg-offwhite {
-    background: var(--offwhite-color);
-}
-
-.bg-primary {
-    background: var(--primary-color)
-}
-
-.bg-accent {
-    background: var(--accent-color);
-}
-
-.bg-focus {
-    background: var(--focus-color);
 }
 
 /* Text Alignment */
