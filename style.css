@@ -140,6 +140,8 @@ a {
 }
 
 .title {
+    padding: 1vh 2vw;
+    border: var(--highlight-color) 2px solid;
     font-size: var(--title-fontsize);
     line-height: calc(1rem + var(--title-fontsize));
     font-variation-settings: "wght" 600;
