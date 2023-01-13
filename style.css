@@ -103,10 +103,10 @@ a {
 }
 
 @media only screen and (max-width: 500px) {
-  .safe {
-    margin: 25vh 0 15vh 15vw;
-    width: 70vw;
-  }
+    .safe {
+        margin: 25vh 0 15vh 15vw;
+        width: 70vw;
+    }
 }
 
 
@@ -161,8 +161,8 @@ a {
 @media only screen and (max-width: 500px) {
     .title {
         font-size: calc(1.5 * var(--title-fontsize));
-        
-    line-height: calc(1rem + 1.5 * var(--title-fontsize));
+
+        line-height: calc(1rem + 1.5 * var(--title-fontsize));
     }
 
     .title h1 {
@@ -182,7 +182,7 @@ a {
     font-size: var(--p-fontsize);
     font-variation-settings: "wght" 350;
     background-color: var(--background-color);
-    
+
     border-right: 3px var(--super-hella-lac) solid;
     padding: 0 2vw 0 0;
 }
@@ -223,18 +223,6 @@ span#cycle {
     background-color: var(--lowkey-accent-color);
 }
 
-
-div.footer {
-    height: 10vh;
-    justify-content: end;
-}
-
-footer {
-    width: 100vw;
-    text-align: center;
-    font-size: calc(0.8 * var(--p-fontsize));
-}
-
 @media only screen and (max-width: 500px) {
     .icons img {
         width: 7vw;
@@ -242,6 +230,16 @@ footer {
 }
 
 
+div.footer {
+    position: absolute;
+    bottom: 0;
+}
+
+footer {
+    width: 100vw;
+    text-align: center;
+    font-size: calc(0.8 * var(--p-fontsize));
+}
 
 @media only screen and (max-height: 400px) {
     footer {
