@@ -1,66 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--TODO: Accessibility (I'm so sorry for the hellscape that lay before you)-->
+<!--TODO: Further accessibility (I'm so sorry for the hellscape that lay before you)-->
+<!--...jk, it's actually pretty decent :)-->
+<!--Have fun cruising around, hit me up at webgoblin@markcarson.dev if you need anything. Thanks!-->
 
 
 <head>
-    <script type="text/javascript" src="https://livejs.com/live.js"></script>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>markcarson.dev/</title>
+
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
-    </style>
-
-
+    <title>markcarson.dev/</title>
     <meta property="og:description" content="Hi there :flushed emoji:">
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://markcarson.dev">
     <meta property="og:image" content="http://markcarson.dev/">
     <meta property="og:title" content="Mark Carson">
 </head>
-<body>
-    <div>
-        <div class="header flex flex-sa flex-ae ds">
-            <div class="nav flex flex-col flex-sa ds">
-                <div class="flex flex-sb">
-                    <a href="">PORTFOLIO</a>
-                    <a href="">ABOUT</a>
-                </div>
-                <div class="flex flex-sb">
-                    <a href="">RESUME</a>
-                    <a href="">REACH_OUT</a>
-                </div>
-                <div class="title">
-                    <h1>Hi, I'm Mark Carson</h1>
-                </div>
 
+<body>
+    <div class="safe fl fl-dir-col">
+        <div class="nav hidden fl fl-dir-row fl-jc-s-bet">
+            <div class="fl fl-al-start fl-dir-col">
+                <a href="portfolio.html">PORTFOLIO</a>
+                <a href="resume.html">RESUME</a>
+            </div>
+            <div class="fl fl-al-end fl-dir-col">
+                <a class="link" href="about.html">ABOUT</a>
+                <a href="REACH_OUT.html">REACH_OUT</a>
             </div>
         </div>
-        <div class="p1 flex flex-sa ds">
-
-            <div>
-                <p>A fast learning <span id="cycle" data-delay="3500"
-                        data-states='["computer scientist", "software developer", "machine learning enthusiast", "front-end developer", "data scientist", "low-level programmer", "front-end developer"]'>programmer</span> looking to use new technology to do impactful things.</p>
-
-                <p><br>For the time being, this site is in development; but please, <em>don't hesitate to reach out</em>.</p>
-
+        <div class="header">
+            <div class="title">
+                <h1><span>Hi, I'm </span><span>Mark Carson</span></h1>
             </div>
-            <!--<div>
-                <img src="./placeholder.jpeg" class="img">
-            </div>-->
+        </div>
+        <div class="intro">
+            <p>A fast learning <span id="cycle" data-delay="3500" data-states='[  "computer scientist", 
+                                        "software developer", 
+                                        "machine learning enthusiast", 
+                                        "front-end developer", 
+                                        "data scientist", 
+                                        "low-level programmer",
+                                        "programmer"]'>programmer</span>
+                looking to use new technology to do impactful things.</p>
+
+            <p>For the time being, this site is in development; but please,
+                <em>don't hesitate to reach out</em>.
+            </p>
+        </div>
+        <div class="icons fl fl-jc-s-aro">
+            <a href="https://www.linkedin.com/in/markcarsondev/" target="_blank" id="linkedin">
+                <img  src="images/linkedin.svg" alt="Visit my LinkedIn page">
+            </a>
+            <a href="https://github.com/MarkCarsonDev" target="_blank" id="github">
+                <img src="images/github.svg" alt="Visit my GitHub page">
+            </a>
         </div>
     </div>
-    
-    <div>
-        <footer><a href="http://markcarson.dev">markcarson.dev/</a><br>Built in 2023</footer>
+
+    <div class="footer fl fl-dir-col">
+        <footer>
+            <a href="http://markcarson.dev">markcarson.dev/</a>
+            <br><a class="underlined" href="mailto:contact@markcarson.dev">contact@markcarson.dev</a> 
+            <br>Built in 2023 using HTML, CSS, and JS
+        </footer>
     </div>
 </body>

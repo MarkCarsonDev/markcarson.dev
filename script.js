@@ -1,11 +1,11 @@
 window.onload = function () {
 
 	setTimeout(function () {
-		increment_text(document.getElementById("cycle"))
+		flip_text(document.getElementById("cycle"))
 	}, 3500);
 
 
-	function increment_text(t) {
+	function flip_text(t) {
 
 		let time = getTransitionDuration(t) * 1000;
 		let delay = parseFloat(t.dataset.delay)
@@ -26,16 +26,12 @@ window.onload = function () {
 		}, time)
 
 		setTimeout(function () {
-			increment_text(t)
+			flip_text(t)
 		}, delay)
 	}
 
 	function getTransitionDuration(element) {
 		return parseFloat(getComputedStyle(element).transitionDuration.substring(0, getComputedStyle(element).transitionDuration.indexOf("s")))
-	}
-
-	function getWidth(element) {
-		return parseFloat(getComputedStyle(element).width)
 	}
 
 }
