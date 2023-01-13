@@ -4,9 +4,9 @@
     --lowkey-accent-color: #c9c2bc;
     --hella-lowkey-accent-color: #a19894;
     --highlight-color: #dab46e;
-    --title-fontsize: calc(0.7rem + 2vw);
-    --nav-fontsize: calc(0.7rem + 1vw);
-    --p-fontsize: calc(0.4rem + 1vw);
+    --title-fontsize: calc(0.7rem + 2.1vw);
+    --nav-fontsize: calc(0.7rem + 1.1vw);
+    --p-fontsize: calc(0.4rem + 1.1vw);
 }
 
 @font-face {
@@ -123,7 +123,7 @@ a {
 }
 
 .nav a:hover {
-    color: var(--highlight-color);
+    color: var(--text-color);
 }
 
 @media only screen and (max-width: 500px) {
@@ -140,8 +140,10 @@ a {
 }
 
 .title {
-    padding: 1vh 2vw;
-    border: var(--highlight-color) 2px solid;
+    padding: 2vh 5vw 0 0.5vh;
+    border: var(--highlight-color) calc(0.09 * var(--title-fontsize)) solid;
+    border-radius: 15vmin 15vmin 15vmin 0;
+    margin-top: 2vh;
     font-size: var(--title-fontsize);
     line-height: calc(1rem + var(--title-fontsize));
     font-variation-settings: "wght" 600;
@@ -150,7 +152,7 @@ a {
 }
 
 .title h1 {
-    margin: 4vh 0 1vh;
+    margin: 4vh 1vh 2vh 1vh;
 }
 
 .title h1 span:first-child {
