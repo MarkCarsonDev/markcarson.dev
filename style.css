@@ -140,10 +140,6 @@ a {
 }
 
 .title {
-    padding: 2vh 5vw 0 0.5vh;
-    border: var(--highlight-color) calc(0.09 * var(--title-fontsize)) solid;
-    border-radius: 15vmin 15vmin 15vmin 0;
-    margin-top: 2vh;
     font-size: var(--title-fontsize);
     line-height: calc(1rem + var(--title-fontsize));
     font-variation-settings: "wght" 600;
@@ -152,7 +148,7 @@ a {
 }
 
 .title h1 {
-    margin: 4vh 1vh 2vh 1vh;
+    margin: 0;
 }
 
 .title h1 span:first-child {
@@ -211,11 +207,12 @@ span#cycle {
 
 
 .icons img {
-    width: 4vw;
+    width: 5vw;
     background-color: var(--text-color);
     transition: background-color 0.1s;
-    border-radius: 1vw;
-    padding: 0.35vw;
+    border-radius: 1vmax;
+    padding: 0.4vw;
+    margin: 0 7.5vw;
 }
 
 .icons img:hover {
