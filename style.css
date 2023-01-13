@@ -3,6 +3,7 @@
     --text-color: #F2E5D7;
     --lowkey-accent-color: #c9c2bc;
     --hella-lowkey-accent-color: #a19894;
+    --super-hella-lac: #4e4846;
     --highlight-color: #dab46e;
     --title-fontsize: calc(0.7rem + 2.1vw);
     --nav-fontsize: calc(0.7rem + 1.1vw);
@@ -94,9 +95,9 @@ a {
 
 .safe {
     width: 50vw;
-    height: 50vh;
+    height: 40vh;
 
-    margin: 25vh 0 15vh 25vw;
+    margin: 25vh 0 25vh 25vw;
 
     transition: margin 0.05s ease-out;
 }
@@ -145,6 +146,7 @@ a {
     font-variation-settings: "wght" 600;
     white-space: nowrap;
     display: inline-block;
+    background-color: var(--background-color);
 }
 
 .title h1 {
@@ -179,7 +181,10 @@ a {
 .intro {
     font-size: var(--p-fontsize);
     font-variation-settings: "wght" 350;
-    white-space: nowrap;
+    background-color: var(--background-color);
+    
+    border-right: 3px var(--super-hella-lac) solid;
+    padding: 0 2vw 0 0;
 }
 
 @media only screen and (max-width: 500px) {
@@ -212,7 +217,6 @@ span#cycle {
     transition: background-color 0.1s;
     border-radius: 1vmax;
     padding: 0.4vw;
-    margin: 0 7.5vw;
 }
 
 .icons img:hover {
