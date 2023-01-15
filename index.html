@@ -23,12 +23,12 @@
 </head>
 
 <body>
-    <div class="safe fl fl-dir-col">
-        <div class="nav hidden fl fl-dir-row fl-jc-s-bet">
-            <div class="fl fl-al-start fl-dir-col">
-                <a href="https://github.com/MarkCarsonDev">PORTFOLIO</a>
+    <div id="main" class="safe fl fl-dir-col">
+        <div class="nav fl fl-dir-row fl-jc-s-bet">
+            <div class="hidden fl fl-al-start fl-dir-col">
+                <a href="#portfolio" onclick="loadPage('portfolio')">Portfolio</a>
             </div>
-            <div class="fl fl-al-end fl-dir-col">
+            <div class="hidden fl fl-al-end fl-dir-col">
                 <a href="https://www.linkedin.com/in/markcarsondev/">REACH_OUT</a>
             </div>
         </div>
@@ -50,7 +50,26 @@
                 <em>don't hesitate to reach out</em>.
             </p>
         </div>
-        <div class="icons fl fl-jc-s-aro">
+    </div>
+    <div name="portfolio" id="portfolio" class="safe fl fl-dir-col">
+        <div class="nav fl fl-dir-row fl-jc-s-bet">
+            <div class="fl fl-al-start fl-dir-col">
+                <a href="../../" onClick="loadPage('main')">Back to main page</a>
+            </div>
+        </div>
+        <div class="header">
+            <div class="title">
+                <h1><span>Here's my </span><span>portfolio:</span></h1>
+            </div>
+        </div>
+        <div class="intro">
+            <p>Page is under development. Cut me some slack!
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="icons fl">
             <a href="https://www.linkedin.com/in/markcarsondev/" target="_blank" id="linkedin">
                 <img  src="images/linkedin.svg" alt="Visit my LinkedIn page">
             </a>
@@ -58,13 +77,8 @@
                 <img src="images/github.svg" alt="Visit my GitHub page">
             </a>
         </div>
-    </div>
-
-    <div class="footer">
-        <footer>
-            <a href="http://markcarson.dev">markcarson.dev/</a>
-            <br><a class="underlined" href="mailto:contact@markcarson.dev">contact@markcarson.dev</a> 
-            <br>Built in 2023 using HTML, CSS, and JS
+        <footer><a class="underlined" href="mailto:contact@markcarson.dev">contact@markcarson.dev</a> 
+            <br>Built from scratch in 2023 using HTML, CSS, and JS
         </footer>
     </div>
 </body>

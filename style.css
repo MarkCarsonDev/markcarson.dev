@@ -29,8 +29,8 @@ body {
     font-family: 'SofiaSans';
 }
 
-.hidden * {
-    display: none;
+.hidden, .hidden * {
+    display: none !important;
 }
 
 .underlined {
@@ -141,8 +141,9 @@ a {
 }
 
 .title {
+    margin-top: 2vh;
     font-size: var(--title-fontsize);
-    line-height: calc(1rem + var(--title-fontsize));
+    line-height: calc(2rem + var(--title-fontsize));
     font-variation-settings: "wght" 600;
     white-space: nowrap;
     display: inline-block;
@@ -210,13 +211,17 @@ span#cycle {
 
 
 
+.icons {
+    justify-content: center;
+    gap: 2vw;
+}
 
 .icons img {
-    width: 5vw;
+    width: 2vw;
     background-color: var(--text-color);
     transition: background-color 0.1s;
     border-radius: 1vmax;
-    padding: 0.4vw;
+    padding: 0.2vw;
 }
 
 .icons img:hover {
