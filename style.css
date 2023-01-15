@@ -29,7 +29,8 @@ body {
     font-family: 'SofiaSans';
 }
 
-.hidden, .hidden * {
+.hidden,
+.hidden * {
     display: none !important;
 }
 
@@ -233,6 +234,7 @@ span#cycle {
         width: 7vw;
     }
 }
+
 
 
 div.footer {

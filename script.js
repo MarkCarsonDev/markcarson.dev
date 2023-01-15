@@ -1,6 +1,6 @@
 window.onload = function () {
 
-	pages = ["main", "portfolio"]
+	pages = ["main"]
 
 	loadPage(pages[0]);
 
@@ -43,6 +43,6 @@ function flip_text(t) {
 }
 
 function getTransitionDuration(element) {
-	return parseFloat(getComputedStyle(element).transitionDuration.substring(0, 
-					getComputedStyle(element).transitionDuration.indexOf("s")));
+	return parseFloat(getComputedStyle(element).transitionDuration.substring(0,
+		getComputedStyle(element).transitionDuration.indexOf("s")));
 }
