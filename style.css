@@ -32,19 +32,16 @@ a {
 /* Banner */
 .banner {
     position: fixed;
+    margin: 0;
     top: 0;
     width: 100%;
     background-color: var(--highlight-color);
-    height: 5vmin;
-}
-
-.banner h3 {
     color: var(--background-color);
     width: 100%;
     text-align: center;
-    margin: 0;
-    padding-top: 1vmin;
-    font-size: 3vmin;
+    padding: 1vmin;
+    font-size: 2.5vmin;
+    font-variation-settings: "wght" 300;
 
 }
 
