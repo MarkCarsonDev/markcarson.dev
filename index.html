@@ -9,13 +9,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="script.js"></script>
 
 
     <title>markcarson.dev/</title>
-    <meta property="og:description" content="Hi there :flushed emoji:">
+    <meta property="og:description"
+        content=" Hi, I'm Mark Carson. A fast learning programmer building impactful tools by looking at problems differently.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://markcarson.dev">
     <meta property="og:image" content="http://markcarson.dev/">
@@ -23,38 +25,51 @@
 </head>
 
 <body>
+    <div id="cursor_trail"></div>
+    <div class="banner">
+        <h3 id="in-construction">For the time being, this site is in development; but please,
+            <em>don't hesitate to reach out</em>.</h3>
+    </div>
     <div id="main" class="safe fl fl-dir-col">
+        <div class="nav">
+            <div class="nav-item">
+                <!-- <a href="/projects.html" class="underlined">Projects</a> -->
+            </div>
+            <div class="nav-item">
+                <a href="download/resume_5_apr_2023.pdf" class="underlined">Resume</a>
+            </div>
+        </div>
         <div class="header">
             <div class="title">
                 <h1><span>Hi, I'm </span><span>Mark Carson.</span></h1>
             </div>
         </div>
         <div class="intro">
-            <p>A fast learning <span id="cycle" data-delay="3500" data-states='[  "computer scientist", 
-                                        "software developer", 
-                                        "machine learning enthusiast",
-                                        "low-level programmer", 
+            <p>A fast learning <span id="cycle" data-delay="3500" data-states='[ 
+                                        "computer science student", 
+                                        "ML/AI researcher", 
                                         "data scientist",
-                                        "programmer"]'>programmer</span>
-                looking to use new technology to do impactful things.</p>
-
-            <p>For the time being, this site is in development; but please,
-                <em>don't hesitate to reach out</em>.
-            </p>
+                                        "full-stack developer",
+                                        "low-level programmer",
+                                        "front-end designer"
+                                        ]'>addition to your team</span>
+                who's building impactful tools by looking at problems differently.</p>
+                
+            <h3 class="scroll-invite">Looking to see what sets me apart? <em>Find out below ⬇</em></h3>
         </div>
     </div>
 
     <div class="footer">
         <div class="icons fl">
             <a href="https://www.linkedin.com/in/markcarsondev" target="_blank" id="linkedin">
-                <img  src="images/linkedin.svg" alt="Visit my LinkedIn page">
+                <img src="images/linkedin.svg" alt="Visit my LinkedIn page">
             </a>
             <a href="https://github.com/MarkCarsonDev" target="_blank" id="github">
                 <img src="images/github.svg" alt="Visit my GitHub page">
             </a>
         </div>
-        <footer><a class="underlined" href="mailto:contact@markcarson.dev">contact@markcarson.dev</a> 
-            <br>Built from scratch in 2023 using HTML, CSS, and JS
+        <footer><a class="underlined" href="mailto:contact@markcarson.dev">contact@markcarson.dev</a>
+            <br>Built from scratch in 2023 using HTML, CSS, and JS (+ jQuery)
         </footer>
     </div>
 </body>
