@@ -42,7 +42,11 @@ a {
     padding: 1vmin;
     font-size: 2.5vmin;
     font-variation-settings: "wght" 300;
+}
 
+.banner em {
+    font-style: normal;
+    font-variation-settings: "wght" 500;
 }
 
 /* "Safe" Boundary for Carousel */
@@ -140,13 +144,16 @@ a {
     padding: 0 2vw 0 0;
 }
 
-.intro p {
+.intro h2 {
     margin: 1vh 0;
+    font-size: var(--p-fontsize);
 }
 
 .intro em {
     font-style: normal;
     font-variation-settings: "wght" 500;
+    font-size: var(--cycle-fontsize);
+
 }
 
 @media only screen and (max-width: 500px) {
@@ -201,7 +208,7 @@ footer p {
     }
 
     .icons img {
-        width: 2vw;
+        width: 3vw;
         background-color: var(--text-color);
         transition: background-color 0.1s;
         border-radius: 1vmax;
@@ -287,6 +294,7 @@ footer p {
     font-variation-settings: "wght" 375;
     font-stretch: 75% 125%;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -294,4 +302,5 @@ footer p {
     src: url('/fonts/Inconsolata-VariableFont_wdth,wght.ttf');
     font-variation-settings: "wght" 700;
     font-style: normal;
+    font-display: swap;
 }
