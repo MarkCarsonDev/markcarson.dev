@@ -1,3 +1,21 @@
+/* Fonts */
+@font-face {
+    font-family: 'SofiaSans';
+    src: url('/fonts/SofiaSansCondensed-VariableFont_wght.ttf');
+    font-variation-settings: "wght" 375;
+    font-stretch: 75% 125%;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('/fonts/Inconsolata-VariableFont_wdth,wght.ttf');
+    font-variation-settings: "wght" 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --background-color: #0e0d0c;
     --background-color-trans: #0e0d0c55;
@@ -206,19 +224,18 @@ a {
         font-variation-settings: "wght" 600;
     }
 
-.scroll {
-    height: auto;
-    overflow: scroll;
-}
-
 #projects-header {
     font-size: calc( var(--cycle-fontsize) * 1.25);
     margin-bottom: 0;
 }
 
+#projects-list {
+    margin-left: 0;
+    padding-left: 0;
+}
 
 #projects-list li, #projects-list a {
-    font-size: calc(0.95 * var(--p-fontsize));
+    font-size: calc(1.2 * var(--p-fontsize));
 }
 
 #projects-list a {
@@ -243,7 +260,11 @@ footer {
 }
 
 @media only screen and (max-height: 400px) {
-    footer {
+    .footer {
+        display: none;
+    }
+
+    .scroll {
         display: none;
     }
 }
@@ -336,23 +357,4 @@ footer p {
 
 .fl-jc-s-eve {
     justify-content: space-evenly;
-}
-
-
-/* Fonts */
-@font-face {
-    font-family: 'SofiaSans';
-    src: url('/fonts/SofiaSansCondensed-VariableFont_wght.ttf');
-    font-variation-settings: "wght" 375;
-    font-stretch: 75% 125%;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Inconsolata';
-    src: url('/fonts/Inconsolata-VariableFont_wdth,wght.ttf');
-    font-variation-settings: "wght" 700;
-    font-style: normal;
-    font-display: swap;
 }

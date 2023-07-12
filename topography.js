@@ -1,10 +1,10 @@
 // Configuration
 const canvasId = 'topography';
 const noiseScale = 300;   // Adjust this to change noise granularity
-const heightmapSize = 3000;   // Size of the heightmap
+const heightmapSize = 2500;   // Size of the heightmap
 const lineColor = 'white';   // Color of the topographic lines
 const scaleFactor = 50;   // Adjust this to change the frequency of topographic lines
-const lineInterval = 5;   // Interval for the topographic lines
+const lineInterval = 10;   // Interval for the topographic lines
 
 // Get canvas and context
 const canvas = document.getElementById(canvasId);
@@ -48,4 +48,4 @@ const backgroundDiv = document.getElementById('background');
 backgroundDiv.style.backgroundImage = `url(${dataUrl})`;
 
 // Fade in the background div once the topography is ready
-backgroundDiv.style.opacity = '0.05';
+backgroundDiv.style.opacity = '0.04';
