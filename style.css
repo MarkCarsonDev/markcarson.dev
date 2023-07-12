@@ -67,7 +67,7 @@ a {
     width: 50vw;
     height: 40vh;
 
-    margin: 25vh 0 0 25vw;
+    margin: 12vh 0 0 25vw;
 
     transition: margin 0.05s ease-out;
 }
@@ -211,6 +211,23 @@ a {
     overflow: scroll;
 }
 
+#projects-header {
+    font-size: calc( var(--cycle-fontsize) * 1.25);
+    margin-bottom: 0;
+}
+
+
+#projects-list li, #projects-list a {
+    font-size: calc(0.95 * var(--p-fontsize));
+}
+
+#projects-list a {
+    transition: color 0.1s ease-in-out;
+}
+
+#projects-list a:hover {
+    color: var(--text-color);
+}
 
 /* Footer */
 div.footer {

@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <script src="script.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/simplex-noise@2.4.0/simplex-noise.min.js"></script>
 
@@ -65,6 +66,16 @@
         </div>
     </div>
 
+    <div class="scroll">
+        <div>
+            <h3 id="projects-header">Recent repos (by commit):</h3>
+            <ul id="projects-list">
+                <li id="projects-loading">Loading...</li>
+            </ul>
+          </div>
+          
+    </div>
+
     <div class="footer">
         <div class="icons fl">
             <a href="https://www.linkedin.com/in/markcarsondev" target="_blank" id="linkedin">
@@ -78,6 +89,6 @@
             <br>Built from scratch in 2023 using HTML, CSS, and JS (+ jQuery)
         </footer>
     </div>
-
     <script src="topography.js"></script>
+    <script src="getProjects.js"></script>
 </body>
