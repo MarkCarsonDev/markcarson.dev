@@ -13,7 +13,9 @@
 
     <script src="script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/simplex-noise@2.4.0/simplex-noise.min.js"></script>
 
+    
 
 
     <title>markcarson.dev/</title>
@@ -26,6 +28,10 @@
 </head>
 
 <body>
+    <div id="background">
+        <canvas id="topography" style="display: none"></canvas>
+    </div>
+    
     <div id="cursor_trail"></div>
     <h3 class="banner">For the time being, this site is in development; but please,
         <em>don't hesitate to reach out</em>.
@@ -48,14 +54,14 @@
             <h2>A fast learning <span id="cycle" data-delay="3500" data-states='[ 
                                         "computer science student",
                                         "data scientist",
+                                        "ML/AI researcher",
                                         "full-stack developer",
                                         "low-level programmer",
-                                        "front-end designer",
-                                        "problem solver"
+                                        "front-end designer"
                                         ]'>addition to your team</span>
                 who's building impactful tools by looking at problems differently.</h2>
 
-            <h3 class="scroll-invite">Looking to see what sets me apart? <em>Find out below ⬇</em></h3>
+            <h3 class="scroll-invite">Looking to see what sets me apart?<br><em>Find out below ⬇</em></h3>
         </div>
     </div>
 
@@ -72,4 +78,6 @@
             <br>Built from scratch in 2023 using HTML, CSS, and JS (+ jQuery)
         </footer>
     </div>
+
+    <script src="topography.js"></script>
 </body>
