@@ -123,11 +123,11 @@ a {
     text-transform: uppercase;
 }
 
-.nav a {
+a.underlined, span.underlined {
     transition: color 0.1s ease-in-out;
 }
 
-.nav a:hover {
+a.underlined:hover, a:hover span.underlined {
     color: var(--text-color);
 }
 
@@ -236,14 +236,6 @@ a {
 
 #projects-list li, #projects-list a {
     font-size: calc(0.85 * var(--p-fontsize));
-}
-
-#projects-list a {
-    transition: color 0.1s ease-in-out;
-}
-
-#projects-list a:hover {
-    color: var(--text-color);
 }
 
 @media only screen and (max-width: 600px) {
