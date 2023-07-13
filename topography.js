@@ -8,13 +8,9 @@ const lineInterval = 10;   // Interval for the topographic lines
 
 // Get canvas and context
 const canvas = document.getElementById(canvasId);
-canvas.width = window.innerWidth * 5;
-canvas.height = window.innerHeight * 5;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 const ctx = canvas.getContext('2d');
-
-// Set background properties
-document.body.style.backgroundSize = 'cover';
-document.body.style.backgroundPosition = 'center';
 
 // Generate heightmap with Simplex noise
 const simplex = new SimplexNoise();
