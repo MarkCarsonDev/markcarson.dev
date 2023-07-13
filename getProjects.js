@@ -18,6 +18,10 @@ function getTimeSince(date) {
     return "Today";
 }
 
+function delay(duration) {
+    return new Promise(resolve => setTimeout(resolve, duration));
+}
+
 async function getRecentProjects(user) {
     try {
         const repoResponse = await fetch(`https://api.github.com/users/${user}/repos`);
@@ -39,6 +43,9 @@ async function getRecentProjects(user) {
         // Update the HTML
         reposParent.removeChild(reposParent.getElementsByTagName('li')[0]);
         for (let i = 0; i < recentRepos.length; i++) {
+            // Wait before fetching the next repo
+            await delay(250);
+
             const repo = recentRepos[i];
 
             let repoElement = document.createElement('li');
