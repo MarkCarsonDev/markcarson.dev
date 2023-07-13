@@ -45,9 +45,6 @@ async function getRecentProjects(user) {
         // Update the HTML
         // reposParent.removeChild(reposParent.getElementsByTagName('li')[0]);
         for (let i = 0; i < recentRepos.length; i++) {
-            // Wait before fetching the next repo
-            await delay(POPIN_DELAY + (i * POPIN_DELAY_FADE_FACTOR));
-
             const repo = recentRepos[i];
 
             let repoElement = document.createElement('li');
@@ -60,6 +57,8 @@ async function getRecentProjects(user) {
             } else {
                 reposParent.appendChild(repoElement)
             }
+            // Wait before fetching the next repo
+            await delay(POPIN_DELAY + (i * POPIN_DELAY_FADE_FACTOR));
         }
 
     } catch (error) {
