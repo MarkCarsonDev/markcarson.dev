@@ -1,4 +1,6 @@
 REPO_COUNT = 3
+POPIN_DELAY = 350 // in milliseconds
+POPIN_DELAY_FADE_FACTOR = 100
 
 function getTimeSince(date) {
     const seconds = Math.floor((new Date() - date) / 1000);
@@ -41,10 +43,10 @@ async function getRecentProjects(user) {
         let recentRepos = repos.slice(0, REPO_COUNT);
 
         // Update the HTML
-        reposParent.removeChild(reposParent.getElementsByTagName('li')[0]);
+        // reposParent.removeChild(reposParent.getElementsByTagName('li')[0]);
         for (let i = 0; i < recentRepos.length; i++) {
             // Wait before fetching the next repo
-            await delay(250);
+            await delay(POPIN_DELAY + (i * POPIN_DELAY_FADE_FACTOR));
 
             const repo = recentRepos[i];
 
@@ -53,7 +55,11 @@ async function getRecentProjects(user) {
             const timeSince = getTimeSince(new Date(repo.pushed_at));
             repoElement.innerHTML = `<a href="${repo.html_url}"><span class="underlined">${repo.name}</span> (${timeSince})</a>`;
 
-            reposParent.appendChild(repoElement)
+            if (i == 0) {
+                reposParent.replaceChild(repoElement, reposParent.getElementsByTagName('li')[0])
+            } else {
+                reposParent.appendChild(repoElement)
+            }
         }
 
     } catch (error) {
