@@ -1,9 +1,9 @@
 // Configuration
 const canvasId = 'topography';
-const noiseScale = 300;   // Adjust this to change noise granularity
-const heightmapSize = 2500;   // Size of the heightmap
-const lineColor = 'white';   // Color of the topographic lines
-const scaleFactor = 50;   // Adjust this to change the frequency of topographic lines
+const noiseScale = 500;   // (zoom) Adjust this to change noise granularity
+const heightmapSize = 2500;   // (image size) Size of the heightmap
+const lineColor = '#e0ba74';   // Color of the topographic lines
+const scaleFactor = 70;   // Adjust this to change the frequency of topographic lines
 const lineInterval = 10;   // Interval for the topographic lines
 
 // Get canvas and context
