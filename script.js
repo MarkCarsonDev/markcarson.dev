@@ -1,4 +1,6 @@
 window.onload = function () {
+	resumeFragment();
+	
 	pages = document.getElementsByClassName("page");
 	loadPage("main");
 
@@ -51,5 +53,16 @@ function loadPage(pageName) {
 function getTransitionDuration(element) {
 	return parseFloat(getComputedStyle(element).transitionDuration.substring(0,
 		getComputedStyle(element).transitionDuration.indexOf("s")));
+}
+
+function resumeFragment() {
+	// Check if the URL has the fragment '#resume'
+	if (window.location.hash === '#resume') {
+		// Find the element with ID 'resume' and click it
+		const resumeElement = document.getElementById('resume');
+		if (resumeElement) {
+			resumeElement.click();
+		}
+		}
 }
   
