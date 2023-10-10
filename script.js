@@ -1,6 +1,6 @@
 window.onload = function () {
 	resumeFragment();
-	
+
 	pages = document.getElementsByClassName("page");
 	loadPage("main");
 
@@ -62,7 +62,7 @@ function resumeFragment() {
 		const resumeElement = document.getElementById('resume');
 		if (resumeElement) {
 			resumeElement.click();
-		}
+			}
 		}
 }
   
