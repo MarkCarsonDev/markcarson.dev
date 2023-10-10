@@ -84,36 +84,18 @@ a {
 }
 
 /* "Safe" Boundary for Carousel */
-.safe {
+.subpage {
     width: 50vw;
     max-height: 40vh;
-
     margin: 17.5vh 0 0 25vw;
-
-    transition: margin 0.05s ease-out;
+    transition: margin 0.05s ease-out, opacity 0.1s linear;
 }
 
 @media only screen and (max-width: 600px) {
-    .safe {
+    .subpage {
         margin: 17.5vh 0 0 17.5vw;
         width: 75vw;
     }
-
-    .scroll {
-        width: 75vw;
-    
-        margin: 0 7.5vw 0 17.5vw;
-    
-        transition: margin 0.05s ease-out;
-}
-}
-
-.scroll {
-        width: 50vw;
-    
-        margin: 0 0 0 25vw;
-    
-        transition: margin 0.05s ease-out;
 }
 
 

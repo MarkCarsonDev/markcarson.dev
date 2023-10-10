@@ -1,5 +1,5 @@
 REPO_COUNT = 3
-POPIN_DELAY = 350 // in milliseconds
+POPIN_DELAY = 0 // in milliseconds
 POPIN_DELAY_FADE_FACTOR = 100
 
 function getTimeSince(date) {
@@ -64,7 +64,7 @@ async function getRecentProjects(user) {
     } catch (error) {
         console.error(error);
         const reposParent = document.getElementById(`projects-list`);
-        reposParent.getElementsByTagName('li')[0].innerHTML = "Uh oh! Something made a fucky wucky! Sowwy! ;-;";
+        reposParent.getElementsByTagName('li')[0].innerHTML = "Uh oh! Something made a f*cky wucky! Sowwy! ;-;";
     }
 }
 

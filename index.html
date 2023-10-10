@@ -40,7 +40,7 @@
     <h3 class="banner">For the time being, this site is in development; but please,
         <em>don't hesitate to reach out</em>.
     </h3>
-    <div id="main" class="safe fl fl-dir-col">
+    <div id="main" class="subpage fl fl-dir-col">
         <div class="nav">
             <div class="nav-item">
                 <!-- <a href="/projects.html" class="underlined">Projects</a> -->
@@ -65,17 +65,29 @@
                                         ]'>addition to your team</span>
                 working on <b>environmental issues</b> through machine learning and new technology.</h2>
 
+            <div class="scroll">
+                <div>
+                    <h3 id="projects-header">Recent repos (by commit):</h3>
+                    <ul id="projects-list">
+                        <li id="projects-loading"></li>
+                    </ul>
+                    </div>
+            </div>
+
             <h3 class="scroll-invite">Looking to see what I've done?<br><em>Find out below ⬇</em></h3>
         </div>
     </div>
 
-    <div class="scroll">
-        <div>
-            <h3 id="projects-header">Recent repos (by commit):</h3>
-            <ul id="projects-list">
-                <li id="projects-loading"></li>
-            </ul>
-          </div>
+    <div id="projects-showcase" class="subpage fl fl-dir-col">
+        <div class="projects">
+            <div>
+                <h3 id="projects-header">Project Showcase:</h3>
+                <ul id="projects-list">
+                    <li id="projects-loading"></li>
+                </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="footer">
@@ -92,5 +104,6 @@
         </footer>
     </div>
     <script src="topography.js"></script>
+    <script src="getRepos.js"></script>
     <script src="getProjects.js"></script>
 </body>
