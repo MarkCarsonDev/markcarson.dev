@@ -40,54 +40,77 @@
     <h3 class="banner">For the time being, this site is in development; but please,
         <em>don't hesitate to reach out</em>.
     </h3>
-    <div id="main" class="subpage fl fl-dir-col">
-        <div class="nav">
-            <div class="nav-item">
-                <!-- <a href="/projects.html" class="underlined">Projects</a> -->
-            </div>
-            <div class="nav-item">
-                <a href="download/Mark Carson Resume.pdf" id="resume" class="underlined">Resume</a>
-            </div>
-        </div>
-        <div class="header">
-            <div class="title">
-                <h1><span>Hi, I'm </span><span>Mark Carson.</span></h1>
-            </div>
-        </div>
-        <div class="intro">
-            <h2 id="cycle-parent">A fast learning <span id="cycle" data-delay="3500" data-states='[ 
-                                        "CS undergraduate",
-                                        "data scientist",
-                                        "ML/AI researcher",
-                                        "full-stack developer",
-                                        "low-level programmer",
-                                        "front-end designer"
-                                        ]'>addition to your team</span>
-                working on <b>environmental issues</b> through machine learning and new technology.</h2>
 
-            <div class="scroll">
+
+
+    <div id="subpages">
+        <div id="main" class="subpage fl fl-dir-col">
+            <div class="nav">
+                <div class="nav-item">
+                </div>
+                <div class="nav-item">
+                    <a href="download/Mark Carson Resume.pdf" id="resume" class="underlined">Resume</a>
+                </div>
+            </div>
+            <div class="header">
+                <div class="title">
+                    <h1><span>Hi, I'm </span><span>Mark Carson.</span></h1>
+                </div>
+            </div>
+            <div class="intro">
+                <h2 id="cycle-parent">A fast learning <span id="cycle" data-delay="3500" data-states='[ 
+                                            "CS undergraduate",
+                                            "data scientist",
+                                            "ML/AI researcher",
+                                            "full-stack developer",
+                                            "low-level programmer",
+                                            "front-end designer"
+                                            ]'>addition to your team</span>
+                    working on <b>environmental issues</b> through machine learning and new technology.</h2>
+
+                <div class="scroll">
+                    <div>
+                        <h3 id="repos-header">Recent repos (by commit):</h3>
+                        <ul id="repos-list">
+                            <li id="repos-loading"></li>
+                        </ul>
+                        </div>
+                </div>
+
+                <h3 class="scroll-invite">Looking to see what else I've done?<br><em>Find out below <span class="blinking">⬇</span></em></h3>
+            </div>
+        </div>
+
+        <div id="projects-showcase" class="subpage fl fl-dir-col">
+            <div class="projects">
                 <div>
-                    <h3 id="projects-header">Recent repos (by commit):</h3>
+                    <h3 id="projects-header">Project Showcase:</h3>
+                    <p>As of now, this showcase displays my <em>public GitHub projects</em>. Any research or other papers, as well as private projects and repositories are not yet listed.</p>
                     <ul id="projects-list">
                         <li id="projects-loading"></li>
                     </ul>
                     </div>
-            </div>
-
-            <h3 class="scroll-invite">Looking to see what I've done?<br><em>Find out below ⬇</em></h3>
-        </div>
-    </div>
-
-    <div id="projects-showcase" class="subpage fl fl-dir-col">
-        <div class="projects">
-            <div>
-                <h3 id="projects-header">Project Showcase:</h3>
-                <ul id="projects-list">
-                    <li id="projects-loading"></li>
-                </ul>
                 </div>
             </div>
-        </div>
+
+        <!-- <div id="papers-showcase" class="subpage fl fl-dir-col">
+            <div class="papers">
+                <div>
+                    <h3 id="papers-header">Papers Showcase:</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos asperiores officiis, reprehenderit recusandae veritatis tempora consequatur quaerat molestias ipsam molestiae quisquam non similique, aliquid eum. Distinctio minima eaque nobis accusamus!</p>
+                    <ul id="papers-list">
+                        <li id="papers-loading"></li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+
+
+
+
     </div>
 
     <div class="footer">
@@ -100,7 +123,8 @@
             </a>
         </div>
         <footer><a class="underlined" href="mailto:contact@markcarson.dev">contact@markcarson.dev</a>
-            <br>Built from scratch in 2023 using HTML, CSS, and JS (+ jQuery)
+            <br>Built from scratch in 2023 using HTML, CSS, and JS (+ jQuery).
+            <br>Designed to be dynamic, accessible, and responsive.
         </footer>
     </div>
     <script src="topography.js"></script>

@@ -1,12 +1,24 @@
+
+let currentSubpage = 0;
+let subpages = [];
+const SUBPAGE_FADE_TIME = 200;
+
 window.onload = function () {
+	subpages = getSurfaceChildren("subpages");
 	resumeFragment();
+	initializeFlip("cycle", 1000);
+	clearSubpages();
+	loadSubpage(currentSubpage, clearPreviousPage = false, displayInstantly = true);
 
-	pages = document.getElementsByClassName("page");
-	loadPage("main");
+	if (mobileAndTabletCheck()) {
+		console.log("I harbor strong feelings towards mobile css (but I guess tablets are okay...).")
+	}
+}
 
+function initializeFlip(id, delay) {
 	setTimeout(function () {
-		flip_text(document.getElementById("cycle"));
-	}, 1000);
+		flip_text(document.getElementById(id));
+	}, delay);
 }
 
 function flip_text(t) {
@@ -37,18 +49,52 @@ function flip_text(t) {
 	}, delay)
 }
 
-function loadPage(pageName) {
-	for (let i = 0; i < pages.length; i++) {
-		pages[i].classList.remove("active-page");
-		if (pages[i].id != pageName) {
-			pages[i].classList.add("hidden");
-		} else {
-			// Load next page
-			document.getElementById(pageName).classList.remove("hidden");
-			document.getElementById(pageName).classList.add("active-page");
+function clearSubpages() {
+	for (let i = 0; i < subpages.length; i++) {
+		if (i != currentSubpage) {
+			unloadSubpageElement(i);
 		}
 	}
 }
+
+function loadSubpage(index, clearPreviousPage = true, displayInstantly = false) {
+	for (let i = 0; i < subpages.length; i++) {
+		// Return if index is out of subpage range
+		if (index > subpages.length - 1 || index < 0) return;
+
+		// Return if the subpage is already loaded
+		if (index == currentSubpage && !displayInstantly) return;
+
+		if (i == index) {
+			const subpageElement = document.getElementById(subpages[index]);
+
+			subpageElement.style.transition = `opacity ${SUBPAGE_FADE_TIME} linear`;
+			setTimeout(function () {
+				subpageElement.style.display = "block";
+			}, SUBPAGE_FADE_TIME);
+
+			setTimeout(function () {
+				subpageElement.style.opacity = "1";
+			}, displayInstantly ? 0 : SUBPAGE_FADE_TIME * 2);
+		} else if (i == currentSubpage && clearPreviousPage) {
+			unloadSubpageElement(i);
+		}
+	}
+
+	currentSubpage = index;
+}
+
+function unloadSubpageElement(index, hideInstantly = false) {
+	const subpageElement = document.getElementById(subpages[index]);
+	subpageFade = hideInstantly ? 0 : SUBPAGE_FADE_TIME
+
+	subpageElement.style.transition = `opacity ${subpageFade} linear`;
+	subpageElement.style.opacity = "0";
+	setTimeout(function () {
+		subpageElement.style.display = "none";
+	}, subpageFade);
+}
+
 
 function getTransitionDuration(element) {
 	return parseFloat(getComputedStyle(element).transitionDuration.substring(0,
@@ -65,4 +111,132 @@ function resumeFragment() {
 			}
 		}
 }
+
+
+
+window.addEventListener('scroll', function() {
+    //console.log('scrol', this.scrollTop);
+});
+
+
+
+function scrollDown() { loadSubpage(Math.min(currentSubpage + 1, subpages.length - 1)); }
+function scrollUp() { loadSubpage(Math.max(currentSubpage - 1, 0)); }
+
+let lastWheelUpdateTime = 0; // Stores the timestamp of the last wheel update
+
+// Attach the wheel event listener to the window object
+window.addEventListener('wheel', handleWheel);
+
+/**
+ * Function to handle the wheel event
+ * @param {WheelEvent} event - The wheel event object
+ */
+function handleWheel(event) {
+  // Get the vertical scroll delta
+  const deltaY = event.deltaY;
+
+  // Get the current timestamp
+  const currentTime = Date.now();
+
+  // If the scroll is not vertical, do nothing
+  if (Math.abs(deltaY) < 10) {
+    return;
+  }
+
+  // If the wheel hasn't been updated in 1200ms, continue
+  if (currentTime - lastWheelUpdateTime >= 1200) {
+    // Update the last wheel update time
+    lastWheelUpdateTime = currentTime;
+
+    // Check if the wheel was moved vertically
+    if (deltaY !== 0) {
+      if (deltaY > 0) {
+		scrollDown();
+      } else {
+        scrollUp();
+      }
+    }
+  }
+}
+
+
+// Get touchmove direction 
+// https://stackoverflow.com/questions/13278087/determine-vertical-direction-of-a-touchmove
+// Juan Herrera, 2014
+var ts;
+window.addEventListener('touchstart', function(e) {
+    ts = e.touches[0].clientY;
+});
+
+window.addEventListener('touchmove', function(e) {
+
+	if (ts === null) return;
+    var te = e.changedTouches[0].clientY;
+    if (ts > te) {
+        scrollDown();
+    } else if (ts < te ) {
+        scrollUp();
+    } else {
+		return;
+	}
+	ts = null;
+});
+
+// Attach the keydown event listener to the window object
+window.addEventListener('keydown', handleKeyDown);
+
+/**
+ * Function to handle the keydown event
+ * @param {KeyboardEvent} event - The keyboard event object
+ */
+function handleKeyDown(event) {
+  // Switch based on the key pressed
+  switch (event.key) {
+    case 'ArrowUp':
+    case 'w':
+      // Scroll up logic
+      scrollUp();
+      break;
+    case 'ArrowDown':
+    case 's':
+      // Scroll down logic
+      scrollDown();
+      break;
+    default:
+      // For other keys, do nothing
+      break;
+  }
+}
+
+
+
   
+
+function getSurfaceChildren(parentID) {
+	// Fetch the parent element by its ID
+	const parentElement = document.getElementById(parentID);
+
+	// Get all the first-level children of the parent element
+	const children = parentElement.children;
+
+	// Initialize an empty array to store the IDs
+	let childIDs = [];
+
+	// Loop through each child element to get its ID
+		for (let i = 0; i < children.length; i++) {
+		// Get the ID of the i-th child element
+		const childID = children[i].id;
+
+		// Add the ID to the array
+		childIDs.push(childID);
+	}
+
+	return childIDs;
+}
+
+window.mobileAndTabletCheck = function() {
+	let check = false;
+	(function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
+	return check;
+  };
