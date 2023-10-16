@@ -170,9 +170,23 @@ window.addEventListener('touchstart', function(e) {
 });
 
 window.addEventListener('touchmove', function(e) {
+	if (e.touches.length > 1) {
+		ts = null;
+	}
+});
+
+window.addEventListener('touchend', function(e) {
 
 	if (ts === null) return;
     var te = e.changedTouches[0].clientY;
+
+	console.log(Math.abs(ts - te))
+
+	// If scroll difference is more than x% of the screen height, scroll
+	if (Math.abs(ts - te) < window.innerHeight * 0.15) {
+		return;
+	}
+
     if (ts > te) {
         scrollDown();
     } else if (ts < te ) {
@@ -180,7 +194,6 @@ window.addEventListener('touchmove', function(e) {
     } else {
 		return;
 	}
-	ts = null;
 });
 
 // Attach the keydown event listener to the window object
