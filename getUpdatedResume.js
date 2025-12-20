@@ -1,8 +1,15 @@
 // Return the URL of the file with the most recent update time in its title (last argument of _ delimited before file extension)
 function getUpdatedResume() {
-	// Get all files in the download/resume directory
-	const resumeDir = "download/resume/";
-	fetch(resumeDir)
+	// Get all files in the downloads/resume directory
+	const resumeDir = "/downloads/resume/";
+	return fetchResumeURL(resumeDir + "index.html").catch((error) => {
+		console.error("Error fetching updated resume:", error);
+		return fetchResumeURL(resumeDir);
+	});
+}
+
+function fetchResumeURL(url) {
+	return fetch(url)
 		.then((response) => response.text())
 		.then((data) => {
 			const parser = new DOMParser();
@@ -27,11 +34,14 @@ function getUpdatedResume() {
 			});
 			if (latestFile) {
 				const resumeLink = document.getElementById("resume");
-				resumeLink.href = resumeDir + latestFile;
-				return resumeDir + latestFile;
+				resumeLink.href = "/downloads/resume/" + latestFile;
+				return "/downloads/resume/" + latestFile;
 			}
 		})
-		.catch((error) => console.error("Error fetching resume files:", error));
+		.catch((error) => {
+			console.error("Error fetching fallback resume files:", error);
+			throw error;
+		});
 }
 
 // Call the function to update the resume link
@@ -51,11 +61,12 @@ function openResume() {
 function resumeFragment() {
 	// Check if the URL has the fragment '#resume'
 	if (window.location.hash === "#resume") {
+		openResume();
 	}
 }
 
 function redirectResume() {
-	if (window.location.pathname === "/#resume") {
+	if (window.location.hash === "#resume") {
 		openResume();
 	}
 }
