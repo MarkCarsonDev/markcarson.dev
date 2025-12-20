@@ -124,8 +124,43 @@ a.underlined:hover, a:hover span.underlined {
     }
 }
 
+/* Tooltip */
+span[data-tooltip] {
+    background-color: var(--highlightER-color);
+    border-radius: 0.3vmax;
+    padding: 0.1em 0.3em;
+    border: 1px white dotted;
 
 
+    & .tooltip-div {
+        position: absolute;
+        /* top: 5vmin; */
+        background-color: var(--background-color-trans);
+        color: var(--text-color);
+        border-bottom: 1.5px var(--super-hella-lac) solid;
+        padding: 2.5vmin 0vmin 1vmin 0vmin;
+        border-radius: 0.5vmax;
+        font-size: calc(0.8 * var(--p-fontsize));
+        width: 100vw;
+        z-index: 10;
+        margin: 0;
+        left: 0;
+        display: none;
+
+        & hover {
+            display: block;
+        }
+    }
+
+    &:hover .tooltip-div {
+        display: block;
+    }
+}
+
+
+
+
+/* Header and Title */
 
 .header {
     margin: 0;
@@ -225,6 +260,11 @@ a.underlined:hover, a:hover span.underlined {
     font-size: calc( var(--cycle-fontsize) * 1.25);
     margin-bottom: 0;
 }
+
+#projects-header {
+    margin-top: 12vmin;
+}
+
 
 #projects-list {
     display: grid;

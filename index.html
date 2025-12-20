@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--TODO: Further accessibility (I'm so sorry for the hellscape that lay before you)-->
-<!--...jk, it's actually pretty decent :)-->
 <!--Have fun cruising around, hit me up at webgoblin@markcarson.dev if you need anything. Thanks!-->
 
 
@@ -36,9 +35,10 @@
         <canvas id="topography" style="display: none"></canvas>
     </div>
     
-    <div id="cursor_trail"></div>
-    <h3 class="banner">For the time being, this site is in development; but please,
-        <em>don't hesitate to reach out</em>.
+    <h3 class="banner">A <span id="new-version-info" 
+        data-tooltip="<span>This new version will be significantly lighter weight, accessibility-first, 
+        and feature a blog all run on a RaspberryPI running my <a href='https://github.com/MarkCarsonDev/sonne'>static site generator</a> from the solar panels on my balcony.</span>">
+        new version of this site</span> of is under development. In the meantime, feel free to look around.
     </h3>
 
 
@@ -49,7 +49,7 @@
                 <div class="nav-item">
                 </div>
                 <div class="nav-item">
-                    <a href="download/Mark Carson Resume.pdf" id="resume" class="underlined">Resume</a>
+                    <a href="" id="resume" class="underlined">Resume</a>
                 </div>
             </div>
             <div class="header">
@@ -59,14 +59,14 @@
             </div>
             <div class="intro">
                 <h2 id="cycle-parent">A fast learning <span id="cycle" data-delay="3500" data-states='[ 
-                                            "CS undergraduate",
+                                            "CSULB alumnus",
                                             "data scientist",
                                             "ML/AI researcher",
                                             "full-stack developer",
-                                            "low-level programmer",
-                                            "front-end designer"
-                                            ]'>addition to your team</span>
-                    working on <b>environmental issues</b> through machine learning and new technology.</h2>
+                                            "geospatial SWE",
+                                            "UX designer"
+                                            ]'> software engineer</span>
+                    <br>working for <b>social</b> and <b>environmental causes</b>.</h2>
 
                 <div class="scroll">
                     <div>
@@ -124,10 +124,12 @@
         </div>
         <footer><a class="underlined" href="mailto:contact@markcarson.dev">contact@markcarson.dev</a>
             <br>Built from scratch in 2023 using HTML, CSS, and JS (+ jQuery).
-            <br>Designed to be dynamic, accessible, and responsive.
+            <br>Designed to be statically dynamic and responsive. and a little fun.
         </footer>
     </div>
-    <script src="topography.js"></script>
-    <script src="getRepos.js"></script>
-    <script src="getProjects.js"></script>
+    <script src="topography.js" defer async></script>
+    <script src="getRepos.js" ></script>
+    <script src="getProjects.js" defer></script>
+    <script src="getUpdatedResume.js" ></script>
+    <script src="tooltips.js"></script>
 </body>
