@@ -1,6 +1,6 @@
-REPO_COUNT = 3
-POPIN_DELAY = 350 // in milliseconds
-POPIN_DELAY_FADE_FACTOR = 100
+REPO_COUNT = 3;
+POPIN_DELAY = 350; // in milliseconds
+POPIN_DELAY_FADE_FACTOR = 100;
 
 function getTimeSince(date) {
 	const seconds = Math.floor((new Date() - date) / 1000);
@@ -21,11 +21,13 @@ function getTimeSince(date) {
 }
 
 function delay(duration) {
-	return new Promise(resolve => setTimeout(resolve, duration));
+	return new Promise((resolve) => setTimeout(resolve, duration));
 }
 // Fetches the repositories for the given user
 async function getRepos(user) {
-	const repoResponse = await fetch(`https://api.github.com/users/${user}/repos`);
+	const repoResponse = await fetch(
+		`https://api.github.com/users/${user}/repos`
+	);
 	return await repoResponse.json();
 }
 
@@ -39,38 +41,53 @@ function getRecentRepos(repos) {
 
 // Handles the display logic for repositories or errors
 async function displayRepos(recentRepos) {
-	const reposParent = document.getElementById('repos-list');
+	const reposParent = document.getElementById("repos-list");
 	try {
 		for (let i = 0; i < recentRepos.length; i++) {
 			const repo = recentRepos[i];
-			let repoElement = document.createElement('li');
+			let repoElement = document.createElement("li");
 			const timeSince = getTimeSince(new Date(repo.pushed_at));
 			repoElement.innerHTML = `<a href="${repo.html_url}"><span class="underlined">${repo.name}</span> (${timeSince})</a>`;
 			if (i === 0) {
-				reposParent.replaceChild(repoElement, reposParent.getElementsByTagName('li')[0]);
+				reposParent.replaceChild(
+					repoElement,
+					reposParent.getElementsByTagName("li")[0]
+				);
 			} else {
 				reposParent.appendChild(repoElement);
 			}
-			await delay(POPIN_DELAY + (i * POPIN_DELAY_FADE_FACTOR));
+			await delay(POPIN_DELAY + i * POPIN_DELAY_FADE_FACTOR);
 		}
 	} catch (error) {
 		console.error(error);
-		reposParent.getElementsByTagName('li')[0].innerHTML = "An error occurred.";
+		reposParent.getElementsByTagName("li")[0].innerHTML = `
+			<div class="showcase error">
+				<div>
+					<p>An error occurred loading repositories.</p>
+					<p class="error-details">Error: ${error.message || "Unknown error"}</p>
+				</div>
+			</div>`;
 	}
 }
 
 // Wrapper function to call the refactored functions
 async function getRecentProjects(user) {
 	const repos = await getRepos(user);
-		if (!Array.isArray(repos)) {
-			// Handle rate limiting or other API errors
-			const reposParent = document.getElementById('repos-list');
-			reposParent.getElementsByTagName('li')[0].innerHTML = "Rate limited or API error";
-			return;
-		}
+	if (!Array.isArray(repos)) {
+		// Handle rate limiting or other API errors
+		const reposParent = document.getElementById("repos-list");
+		const statusCode = repos.status || 403;
+		reposParent.getElementsByTagName("li")[0].innerHTML = `
+			<div class="showcase small error">
+				<div>
+					<p>Rate limited from Github :( Guess you'll have to <a href='mailto:contact@markcarson.dev'>reach out</a>...</p>
+					<p class="error-details">Github.com ${statusCode}: Rate Limited</p>
+				</div>
+			</div>`;
+		return;
+	}
 	const recentRepos = getRecentRepos(repos);
 	await displayRepos(recentRepos);
 }
 
-getRecentProjects('MarkCarsonDev');
-
+getRecentProjects("MarkCarsonDev");

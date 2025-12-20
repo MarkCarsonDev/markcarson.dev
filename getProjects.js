@@ -33,8 +33,14 @@ async function getRecentProjects(user) {
 		const reposParent = document.getElementById(`projects-list`);
 
 		if (repoResponse.status === 403) {
-			reposParent.getElementsByTagName("li")[0].innerHTML =
-				"Really? Rate limited? Just email me already...";
+			const errorElement = reposParent.getElementsByTagName("li")[0];
+			errorElement.innerHTML = `
+				<div class="showcase error">
+					<div>
+						<p>Really? Rate limited? <a href="mailto:contact@markcarson.dev">Just email me already</a>...</p>
+						<p class="error-details">Github.com 403: Rate Limited</p>
+					</div>
+				</div>`;
 			return;
 		}
 
@@ -82,7 +88,9 @@ async function getRecentProjects(user) {
 															.slice(0, 3)
 															.join(", ") +
 													  `, <a class="contributor" href="${repo.html_url}/graphs/contributors">et. al</a>`
-													: contributorsList.join(", ")
+													: contributorsList.join(
+															", "
+													  )
 											}
                                         </div>
                                         <p class="project-description">${repo.description.slice(
@@ -90,7 +98,9 @@ async function getRecentProjects(user) {
 											-1
 										)}</p>
                                     </div>
-                                    <a href="${repo.html_url}" class="github-btn" target="_blank">Open in GitHub</a>
+                                    <a href="${
+										repo.html_url
+									}" class="github-btn" target="_blank">Open in Github</a>
                                 </div>`;
 
 			if (i == 0) {
@@ -107,8 +117,10 @@ async function getRecentProjects(user) {
 	} catch (error) {
 		console.error(error);
 		const reposParent = document.getElementById(`projects-list`);
-		reposParent.getElementsByTagName("li")[0].innerHTML =
-			"Error loading projects.";
+		reposParent.getElementsByTagName("li")[0].innerHTML = `
+			<div class="showcase error">
+				<p>Error loading projects.</p>
+			</div>`;
 	}
 }
 

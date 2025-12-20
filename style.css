@@ -409,6 +409,28 @@ div:has([data-tooltip]:hover) .tooltip-div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    &.small {
+        min-height: 0 !important;
+        max-height: 15vh !important;
+        min-width: 0 !important;
+    }
+}
+
+.showcase.error {
+    border: 1.5px #d97a7a solid;
+    background-color: #d97a7a0d;
+    color: var(--text-color);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.showcase.error .error-details {
+    font-size: var(--subp-fontsize);
+    color: var(--super-hella-lac);
+    margin-top: 1em;
+    font-variation-settings: "wght" 350;
 }
 
 .showcase .contributors, .contributor {
