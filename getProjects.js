@@ -37,7 +37,7 @@ async function getRecentProjects(user) {
 			errorElement.innerHTML = `
 				<div class="showcase error">
 					<div>
-						<p>Really? Rate limited? <a href="mailto:contact@markcarson.dev">Just email me already</a>...</p>
+						<p>Really? Rate limited?<br><a href="mailto:contact@markcarson.dev">Just email me already</a>...</p>
 						<p class="error-details">Github.com 403: Rate Limited</p>
 					</div>
 				</div>`;

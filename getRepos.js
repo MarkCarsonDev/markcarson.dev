@@ -80,7 +80,7 @@ async function getRecentProjects(user) {
 		reposParent.getElementsByTagName("li")[0].innerHTML = `
 			<div class="showcase small error">
 				<div>
-					<p>Rate limited from Github :( Guess you'll have to <a href='mailto:contact@markcarson.dev'>reach out</a>...</p>
+					<p>Rate limited from Github :( <br>Guess you'll have to <a href='mailto:contact@markcarson.dev'>reach out</a>...</p>
 					<p class="error-details">Github.com ${statusCode}: Rate Limited</p>
 				</div>
 			</div>`;
