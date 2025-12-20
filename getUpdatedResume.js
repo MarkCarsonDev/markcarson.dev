@@ -1,24 +1,13 @@
 // Return the URL of the file with the most recent update time in its title (last argument of _ delimited before file extension)
 function getUpdatedResume() {
-	// Get all files in the downloads/resume directory
-	const resumeDir = "/downloads/resume/";
-	return fetchResumeURL(resumeDir + "index.html").catch((error) => {
-		console.error("Error fetching updated resume:", error);
-		return fetchResumeURL(resumeDir);
-	});
-}
-
-function fetchResumeURL(url) {
-	return fetch(url)
-		.then((response) => response.text())
+	return fetch('https://api.github.com/repos/MarkCarsonDev/markcarson.dev/contents/downloads/resume')
+		.then((response) => response.json())
 		.then((data) => {
-			const parser = new DOMParser();
-			const doc = parser.parseFromString(data, "text/html");
-			const links = Array.from(doc.querySelectorAll("a"));
 			let latestFile = null;
 			let latestDate = null;
-			links.forEach((link) => {
-				const fileName = link.getAttribute("href");
+
+			for (let file of data) {
+				const fileName = file.name;
 				const match = fileName.match(/_(\d{6})\./);
 				if (match) {
 					const dateStr = match[1];
@@ -31,15 +20,17 @@ function fetchResumeURL(url) {
 						latestFile = fileName;
 					}
 				}
-			});
+			}
+
 			if (latestFile) {
 				const resumeLink = document.getElementById("resume");
-				resumeLink.href = "/downloads/resume/" + latestFile;
-				return "/downloads/resume/" + latestFile;
+				const resumeURL = "/downloads/resume/" + latestFile;
+				resumeLink.href = resumeURL;
+				return resumeURL;
 			}
 		})
 		.catch((error) => {
-			console.error("Error fetching fallback resume files:", error);
+			console.error("Error fetching updated resume:", error);
 			throw error;
 		});
 }
