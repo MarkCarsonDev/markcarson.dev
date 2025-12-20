@@ -38,7 +38,7 @@ async function getRecentProjects(user) {
 				<div class="showcase error">
 					<div>
 						<p>Really? Rate limited?<br><a href="mailto:contact@markcarson.dev">Just email me already</a>...</p>
-						<p class="error-details">Github.com 403: Rate Limited</p>
+						<p class="error-details">github.com 403: Rate Limited</p>
 					</div>
 				</div>`;
 			return;
@@ -100,7 +100,7 @@ async function getRecentProjects(user) {
                                     </div>
                                     <a href="${
 										repo.html_url
-									}" class="github-btn" target="_blank">Open in Github</a>
+									}" class="github-btn" target="_blank">Open in GitHub</a>
                                 </div>`;
 
 			if (i == 0) {
