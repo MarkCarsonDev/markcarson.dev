@@ -38,17 +38,23 @@
     --m-cycle-fontsize: 1.7rem;
 }
 
-/* Force 'html' to be viewport width */
+/* Force 'html' and 'body' to be full viewport */
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     margin: 0;
-    
+    height: 100%;
+
     color: var(--text-color);
     background-color: var(--background-color);
-    font-family: 'SofiaSans'; 
+    font-family: 'SofiaSans';
 
     /* disable scrolling */
     overflow: hidden;
-    
+
 }
 
 .app {
@@ -57,6 +63,8 @@ body {
     height: 100%;
     overflow: hidden;
     margin: 0;
+    top: 0;
+    left: 0;
 }
 
 a {
@@ -330,7 +338,7 @@ div:has([data-tooltip]:hover) .tooltip-div {
 }
 
 #projects-list::after {
-    content: 'End of showcase';
+    content: "(that's the end of my public projects)";
     display: flex;
     align-items: center;
     justify-content: center;
@@ -438,6 +446,18 @@ div:has([data-tooltip]:hover) .tooltip-div {
     left: 0;
     right: 0;
     z-index: 5;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+    .footer {
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 2vh;
+    }
 }
 
 footer {
