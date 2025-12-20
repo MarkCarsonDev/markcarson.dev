@@ -1,6 +1,8 @@
 // Return the URL of the file with the most recent update time in its title (last argument of _ delimited before file extension)
 function getUpdatedResume() {
-	return fetch('https://api.github.com/repos/MarkCarsonDev/markcarson.dev/contents/downloads/resume')
+	return fetch(
+		"https://api.github.com/repos/MarkCarsonDev/markcarson.dev/contents/downloads/resume"
+	)
 		.then((response) => response.json())
 		.then((data) => {
 			let latestFile = null;

@@ -12,12 +12,6 @@ window.onload = function () {
 		(clearPreviousPage = false),
 		(displayInstantly = true)
 	);
-
-	if (mobileAndTabletCheck()) {
-		console.log(
-			"I harbor strong feelings towards mobile css (but I guess tablets are okay...)."
-		);
-	}
 };
 
 // Support loading subpages via URL subpage hash
@@ -143,9 +137,7 @@ function resumeFragment() {
 	}
 }
 
-window.addEventListener("scroll", function () {
-	//console.log('scrol', this.scrollTop);
-});
+window.addEventListener("scroll", function () {});
 
 function scrollDown() {
 	loadSubpage(Math.min(currentSubpage + 1, subpages.length - 1));
@@ -208,8 +200,6 @@ window.addEventListener("touchmove", function (e) {
 window.addEventListener("touchend", function (e) {
 	if (ts === null) return;
 	var te = e.changedTouches[0].clientY;
-
-	console.log(Math.abs(ts - te));
 
 	// If scroll difference is more than x% of the screen height, scroll
 	if (Math.abs(ts - te) < window.innerHeight * 0.11) {

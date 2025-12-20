@@ -1,4 +1,3 @@
-console.log("started topography generation");
 start_timer = performance.now();
 
 // Configuration
@@ -52,7 +51,7 @@ function generateTopography() {
 	backgroundDiv.style.opacity = "0.04";
 
 	end_timer = performance.now();
-	console.log(
+	console.info(
 		`Topography generation took ${(
 			(end_timer - start_timer) /
 			1000
