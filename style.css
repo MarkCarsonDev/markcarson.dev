@@ -362,8 +362,14 @@ footer p {
         padding: 0.2vw;
     }
 
-    .icons img:hover {
+    .icons img:hover, 
+    .icons a:hover img {
         background-color: var(--lowkey-accent-color);
+        cursor: pointer !important;
+    }
+
+    .icons a:hover {
+        cursor: pointer !important;
     }
 
     @media only screen and (max-width: 600px) {
