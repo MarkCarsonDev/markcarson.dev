@@ -7,6 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		tooltipDiv.className =
 			"tooltip-div " + el.getAttribute("data-tooltip-classes");
 		tooltipDiv.innerHTML = tooltipText;
-		el.appendChild(tooltipDiv);
+		if (el.getAttribute("data-tooltip-parent") != null) {
+			document
+				.querySelector(el.getAttribute("data-tooltip-parent"))
+				.appendChild(tooltipDiv);
+		} else {
+			el.appendChild(tooltipDiv);
+		}
 	});
 });

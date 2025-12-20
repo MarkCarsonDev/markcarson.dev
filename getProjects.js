@@ -69,25 +69,28 @@ async function getRecentProjects(user) {
 			const timeSince = getTimeSince(new Date(repo.pushed_at));
 			repoElement.innerHTML = `
                                 <div class="showcase">
-                                    <a href="${repo.html_url}">
-                                        <span class="underlined">${
-											repo.name
-										}</span> (${timeSince})
-                                    </a>
-                                    <div class="contributors">
-                                        ${
-											contributorsList.length > 3
-												? contributorsList
-														.slice(0, 3)
-														.join(", ") +
-												  `, <a class="contributor" href="${repo.html_url}/graphs/contributors">et. al</a>`
-												: contributorsList.join(", ")
-										}
+                                    <div>
+                                        <a href="${repo.html_url}">
+                                            <span class="underlined">${
+												repo.name
+											}</span> (${timeSince})
+                                        </a>
+                                        <div class="contributors">
+                                            ${
+												contributorsList.length > 3
+													? contributorsList
+															.slice(0, 3)
+															.join(", ") +
+													  `, <a class="contributor" href="${repo.html_url}/graphs/contributors">et. al</a>`
+													: contributorsList.join(", ")
+											}
+                                        </div>
+                                        <p class="project-description">${repo.description.slice(
+											0,
+											-1
+										)}</p>
                                     </div>
-                                    <p class="project-description">${repo.description.slice(
-										0,
-										-1
-									)}</p>
+                                    <a href="${repo.html_url}" class="github-btn" target="_blank">Open in GitHub</a>
                                 </div>`;
 
 			if (i == 0) {

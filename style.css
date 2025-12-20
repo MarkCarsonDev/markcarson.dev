@@ -31,18 +31,32 @@
     --p-fontsize: calc(0.4rem + 1.5vw);
     --subp-fontsize: calc(0.3rem + 0.8vw);
     --cycle-fontsize: calc(0.5rem + 1.5vw);
+    --m-title-fontsize: 3rem;
+    --m-nav-fontsize: 2em;
+    --m-p-fontsize: 1.7rem;
+    --m-subp-fontsize: 1.5rem;
+    --m-cycle-fontsize: 1.7rem;
 }
 
 /* Force 'html' to be viewport width */
 body {
-    width: 100%;
-    height: 100%;
     margin: 0;
     
     color: var(--text-color);
     background-color: var(--background-color);
     font-family: 'SofiaSans'; 
+
+    /* disable scrolling */
+    overflow: hidden;
     
+}
+
+.app {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
 }
 
 a {
@@ -65,23 +79,31 @@ a {
 
 
 /* Banner */
-.banner {
+#banner-container {
     position: fixed;
-    margin: 0;
     top: 0;
-    width: 100%;
-    background-color: var(--highlight-color);
-    color: var(--background-color);
-    width: 100%;
-    text-align: center;
-    padding: 1vmin;
-    font-size: 2.5vmin;
-    font-variation-settings: "wght" 300;
-}
+    width: auto;
+    z-index: 1000;
 
-.banner em {
-    font-style: normal;
-    font-variation-settings: "wght" 500;
+    h3.banner {
+        position: relative;
+        margin: 0;
+        top: 0;
+        width: 100vw;
+        background-color: var(--highlight-color);
+        color: var(--background-color);
+        text-align: center;
+        padding: 1vmin;
+        font-size: 2.5vmin;
+        font-variation-settings: "wght" 300;
+
+        & {
+            em {
+            font-style: normal;
+            font-variation-settings: "wght" 500;
+            }
+        }
+    }
 }
 
 /* "Safe" Boundary for Carousel */
@@ -130,31 +152,31 @@ span[data-tooltip] {
     border-radius: 0.3vmax;
     padding: 0.1em 0.3em;
     border: 1px white dotted;
+}
 
+.tooltip-div {
+    position: relative;
+    /* top: 5vmin; */
+    background-color: var(--background-color-trans) !important;
+    color: var(--text-color);
+    border-bottom: 1.5px var(--super-hella-lac) solid;
+    padding: 1vmin;
+    border-radius: 0.5vmax;
+    font-size: calc(0.8 * var(--p-fontsize));
+    width: calc(100vw - 1em);
+    text-align: center;
+    z-index: 10;
+    margin: 0;
+    left: 0;
+    display: none !important;
 
-    & .tooltip-div {
-        position: absolute;
-        /* top: 5vmin; */
-        background-color: var(--background-color-trans);
-        color: var(--text-color);
-        border-bottom: 1.5px var(--super-hella-lac) solid;
-        padding: 2.5vmin 0vmin 1vmin 0vmin;
-        border-radius: 0.5vmax;
-        font-size: calc(0.8 * var(--p-fontsize));
-        width: 100vw;
-        z-index: 10;
-        margin: 0;
-        left: 0;
-        display: none;
-
-        & hover {
-            display: block;
-        }
-    }
-
-    &:hover .tooltip-div {
+    & hover {
         display: block;
     }
+}
+
+div:has([data-tooltip]:hover) .tooltip-div {
+    display: block !important;
 }
 
 
@@ -251,8 +273,29 @@ span[data-tooltip] {
     margin-left: 4vw;
     margin-right: 4vw;
     width: 90vw;
-    overflow-y: visible;
-    height: 100%;
+    max-height: 50vh;
+    position: relative;
+}
+
+#projects-showcase::before,
+#projects-showcase::after {
+    content: '';
+    position: absolute;
+    top: 7em;
+    bottom: 0;
+    width: 15vw;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#projects-showcase::before {
+    left: 0;
+    background: linear-gradient(to right, var(--background-color), transparent);
+}
+
+#projects-showcase::after {
+    right: 0;
+    background: linear-gradient(to left, var(--background-color), transparent);
 }
 
 #projects-header, 
@@ -267,21 +310,52 @@ span[data-tooltip] {
 
 
 #projects-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-
-    margin: 0 10vw 0 0;
-    padding-left: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    padding: 2vh calc(50vw - 12.5vw - 1vw) 2vh 15vw;
+    margin: 0;
     list-style-type: none;
+
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
 }
 
-#projects-list ul {
+#projects-list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
 
+#projects-list::after {
+    content: 'End of showcase';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px var(--super-hella-lac) dashed;
+    border-radius: 5px;
+    padding: 1em;
+    min-width: 25vw;
+    max-width: 25vw;
+    min-height: 35vh;
+    flex-shrink: 0;
+    color: var(--super-hella-lac);
+    font-size: var(--p-fontsize);
+    font-variation-settings: "wght" 400;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    #projects-list::after {
+        min-width: 60vw;
+        max-width: 60vw;
+    }
 }
 
 .project-description {
-    font-size: var(--subp-fontsize);
+    font-size: 1rem;
 }
 
 #repos-list {
@@ -300,18 +374,33 @@ span[data-tooltip] {
         font-size: calc( var(--cycle-fontsize) * 1.45);
     }
 
+    #projects-list {
+        padding: 2vh calc(50vw - 30vw - 1vw);
+    }
+
     #projects-list li,
     #repos-list li, #repos-list a {
         font-size: calc(1.25 * var(--p-fontsize));
+    }
+
+    .showcase {
+        min-width: 60vw;
+        max-width: 60vw;
     }
 }
 
 .showcase {
     border: 1.5px var(--super-hella-lac) solid;
     border-radius: 5px;
-    padding: 0.2em;
+    padding: 1em;
     margin: 0.15em;
-    height: 90%;
+    min-width: 25vw;
+    max-width: 25vw;
+    min-height: 35vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .showcase .contributors, .contributor {
@@ -320,17 +409,41 @@ span[data-tooltip] {
     font-size: var(--subp-fontsize);
 }
 
+.github-btn {
+    display: inline-block;
+    padding: 0.5em 1em;
+    margin-top: 1em;
+    background-color: var(--highlightER-color);
+    border: 1.5px var(--highlight-color) solid;
+    border-radius: 5px;
+    color: var(--highlight-color);
+    font-size: var(--subp-fontsize);
+    font-variation-settings: "wght" 500;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+    cursor: pointer;
+}
+
+.github-btn:hover {
+    background-color: var(--highlight-color);
+    color: var(--background-color);
+}
+
 /* Footer */
-div.footer {
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 2vh;
+.footer {
+    max-height: 12vh;
+    position: fixed;
+    bottom: 2vh;
+    left: 0;
+    right: 0;
+    z-index: 5;
 }
 
 footer {
     width: 100vw;
     text-align: center;
-    font-size: calc(0.8 * var(--p-fontsize));
+    font-size: var(--subp-fontsize);
 }
 
 @media only screen and (max-height: 400px) {
