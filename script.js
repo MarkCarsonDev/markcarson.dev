@@ -156,6 +156,13 @@ window.addEventListener("wheel", handleWheel);
  * @param {WheelEvent} event - The wheel event object
  */
 function handleWheel(event) {
+	// Check if wheel event originated from projects showcase
+	const projectsShowcase = document.getElementById('projects-showcase');
+	if (projectsShowcase && projectsShowcase.contains(event.target)) {
+		// Let horizontalScroll.js handle it
+		return;
+	}
+
 	// Get the vertical scroll delta
 	const deltaY = event.deltaY;
 
